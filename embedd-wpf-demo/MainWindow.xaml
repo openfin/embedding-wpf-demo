@@ -1,0 +1,12 @@
+﻿<Window x:Class="embedd_wpf_demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:winForm="clr-namespace:Openfin.WinForm;assembly=Openfin.WinForm"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <WindowsFormsHost>
+            <winForm:EmbeddedView x:Name="OpenFinControl" />
+        </WindowsFormsHost>
+
+    </Grid>
+</Window>
