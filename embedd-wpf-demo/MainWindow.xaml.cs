@@ -37,7 +37,7 @@ namespace embedd_wpf_demo
             //Initialize the chart view by passing the runtime Options and the ApplicationOptions
             OpenFinControl.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid-uuid", "http://cdn.openfin.co/embed-web-wpf/"));
 
-            //We want to re-use the chart application and create a new window for it, lets wait until its ready.
+            //Once the grid is ready get the data and populate the list box.
             OpenFinControl.OnReady += (sender, e) =>
             {
                 //set up the data
