@@ -32,7 +32,7 @@ namespace embedd_wpf_demo
                 EnableRemoteDevTools = true,
                 RemoteDevToolsPort = 9090
             };
-            OpenFinControl.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid", "http://cdn.openfin.co/embed-web-wpf/"));
+            OpenFinControl.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid-uuid", "hyper-grid", "http://cdn.openfin.co/embed-web-wpf/"));
 
             OpenFinControl.OnReady += (sender, e) =>
             {
