@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>fin-hypergrid JSON Standalone Demo</title>
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+  <script src="bower_components/accountingjs/accounting.min.js"></script>
+  <link rel="import" href="http://openfin.github.io/fin-hypergrid/components/fin-hypergrid/fin-hypergrid.min.html">
+
+  <style>
+    fin-hypergrid {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        width:622px;
+    }
+  </style>
+</head>
+<body>
+    <div id="hypergrid-container">
+        <fin-hypergrid class="abs" id="json-example">
+            <fin-hypergrid-behavior-json></fin-hypergrid-behavior-json>
+        </fin-hypergrid>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

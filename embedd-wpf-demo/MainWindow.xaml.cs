@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Openfin.WinForm;
+using Newtonsoft.Json.Linq;
 
 namespace embedd_wpf_demo
 {
@@ -21,6 +22,7 @@ namespace embedd_wpf_demo
     public partial class MainWindow : Window
     {
         const string version = "alpha";
+        List<Person> peopleData;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,7 +32,47 @@ namespace embedd_wpf_demo
                 EnableRemoteDevTools = true,
                 RemoteDevToolsPort = 9090
             };
-            OpenFinControl.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("of-chart-tab", "of-chart-tab", "http://cdn.openfin.co/embed-web/chart.html"));
+            OpenFinControl.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid", "http://cdn.openfin.co/embed-web-wpf/"));
+
+            OpenFinControl.OnReady += (sender, e) =>
+            {
+                //set up the data
+                peopleData = PeopleData.Get();
+                var peopleInStates = (from person in peopleData
+                                      group person by person.BirthState into stateGroup
+                                      select new
+                                      {
+                                          StateName = stateGroup.First().BirthState,
+                                          People = stateGroup
+                                      }).ToList();
+                
+                invokeInUIThread(() => peopleInStates.ForEach(state => StatesBox.Items.Add(state.StateName)));
+
+            };
+        }
+
+        private void States_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var data = (from person in peopleData
+                       where StatesBox.SelectedItems.Contains(person.BirthState)
+                        select person).ToList();
+
+            sendDataToGrid(data);
+        }
+
+        private void sendDataToGrid(List<Person> people)
+        {
+            var message = JObject.FromObject(new
+            {
+                data = people
+            });
+
+            OpenFinControl.OpenfinRuntime.InterApplicationBus.send("hyper-grid", "more-data", message);
+        }
+
+        private void invokeInUIThread(Action action)
+        {
+            Dispatcher.Invoke(action);
         }
     }
 }
