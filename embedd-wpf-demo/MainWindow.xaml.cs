@@ -11,9 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Openfin.WinForm;
 using Newtonsoft.Json.Linq;
-
+    
 namespace embedd_wpf_demo
 {
     /// <summary>
@@ -35,10 +34,10 @@ namespace embedd_wpf_demo
             };
 
             //Initialize the chart view by passing the runtime Options and the ApplicationOptions
-            OpenFinControl.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid-uuid", "http://cdn.openfin.co/embed-web-wpf/"));
+            OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid-uuid", "http://cdn.openfin.co/embed-web-wpf/"));
 
             //We want to re-use the chart application and create a new window for it, lets wait until its ready.
-            OpenFinControl.OnReady += (sender, e) =>
+            OpenFinEmbeddedView.OnReady += (sender, e) =>
             {
                 //set up the data
                 peopleData = PeopleData.Get();
@@ -52,13 +51,11 @@ namespace embedd_wpf_demo
                 
                 //Any Interactions with the UI must be done in the right thread.
                 invokeInUIThread(() => peopleInStates.ForEach(state => StatesBox.Items.Add(state.StateName)));
-
             };
         }
 
         private void States_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             //On State selection we will send the data to the grid.
             var data = (from person in peopleData
                        where StatesBox.SelectedItems.Contains(person.BirthState)
@@ -71,7 +68,7 @@ namespace embedd_wpf_demo
         {
             //package the data and send it over the inter application bus
             var message = JObject.FromObject(new { data = people });
-            OpenFinControl.OpenfinRuntime.InterApplicationBus.send("hyper-grid-uuid", "more-data", message);
+            OpenFinEmbeddedView.OpenfinRuntime.InterApplicationBus.send("hyper-grid-uuid", "more-data", message);
         }
 
         //Any Interactions with the UI must be done in the right thread.
