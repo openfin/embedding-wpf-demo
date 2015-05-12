@@ -51,9 +51,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Openfin.WinForm.4.40.2.10\lib\net40\Openfin.WinForm.dll</HintPath>
     </Reference>
-    <Reference Include="OpenFin.WPF, Version=4.40.2.0, Culture=neutral, PublicKeyToken=56d711d0b180fd61, processorArchitecture=MSIL">
+    <Reference Include="OpenFin.WPF, Version=4.40.2.1, Culture=neutral, PublicKeyToken=56d711d0b180fd61, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\OpenFin.WPF.4.40.2.0\lib\net40\OpenFin.WPF.dll</HintPath>
+      <HintPath>..\packages\OpenFin.WPF.4.40.2.1\lib\net40\OpenFin.WPF.dll</HintPath>
     </Reference>
     <Reference Include="OpenfinDesktop, Version=4.40.2.9, Culture=neutral, PublicKeyToken=83317fb2c85f75f4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

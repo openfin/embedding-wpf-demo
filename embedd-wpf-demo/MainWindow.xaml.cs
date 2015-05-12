@@ -50,14 +50,14 @@ namespace embedd_wpf_demo
                                       }).ToList();
                 
                 //Any Interactions with the UI must be done in the right thread.
-                invokeInUIThread(() => peopleInStates.ForEach(state => StatesBox.Items.Add(state.StateName)));
+                Openfin.WPF.Utils.InvokeOnUiThreadIfRequired(this, () => peopleInStates.ForEach(state => StatesBox.Items.Add(state.StateName)));
             };
         }
 
         private void States_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //On State selection we will send the data to the grid.
-            var data = (from person in peopleData
+            var data = (from person in peopleData   
                        where StatesBox.SelectedItems.Contains(person.BirthState)
                         select person).ToList();
             sendDataToGrid(data);
@@ -69,12 +69,6 @@ namespace embedd_wpf_demo
             //package the data and send it over the inter application bus
             var message = JObject.FromObject(new { data = people });
             OpenFinEmbeddedView.OpenfinRuntime.InterApplicationBus.send("hyper-grid-uuid", "more-data", message);
-        }
-
-        //Any Interactions with the UI must be done in the right thread.
-        private void invokeInUIThread(Action action)
-        {
-            Dispatcher.Invoke(action);
         }
     }
 }
