@@ -62,7 +62,7 @@ OpenFinEmbeddedView.OnReady += (sender, e) =>
     var windowOptions = new WindowOptions("jsdocs", "http://cdn.openfin.co/jsdocs/3.0.1.5/");
 
     //Assuming we have added a second EmbeddedView called OpenFinEmbeddedViewChild we initialize it.
-    OpenFinEmbeddedView.Initialize(runtimeOptions, OpenFinEmbeddedView.OpenfinApplication, windowOptions)
+    OpenFinEmbeddedViewChild.Initialize(runtimeOptions, OpenFinEmbeddedView.OpenfinApplication, windowOptions)
 }
 ```
 
