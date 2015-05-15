@@ -32,7 +32,8 @@ namespace embedd_wpf_demo
                 EnableRemoteDevTools = true,
                 RemoteDevToolsPort = 9090
             };
-
+            //We do not resize so lets set AutoScale to false;
+            OpenFinEmbeddedView.AutoScale = false;
             //Initialize the grid view by passing the runtime Options and the ApplicationOptions
             OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid-uuid", "http://cdn.openfin.co/embed-web-wpf/"));
 
