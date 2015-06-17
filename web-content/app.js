@@ -1,6 +1,5 @@
 //setup random data for the JSON tab example
 (function(){
-
    var headers = [
             'last',
             'first',
@@ -23,62 +22,15 @@
             'Income',
             'Travel'
         ],
-        editorTypes = [
-            'choice',
-            'textfield',
-            'spinner',
-            'date',
-            'choice',
-            'choice',
-            'choice',
-            'textfield',
-            'textfield'
-        ],
-        seed = 1,
-        rnd = function() {
-            var x = Math.sin(seed++)*10000,
-                r = x - Math.floor(x);
-            return r;
-        },
-        numRows = 100000,
-        firstNames = ['Olivia', 'Sophia', 'Ava', 'Isabella', 'Boy', 'Liam', 'Noah', 'Ethan', 'Mason', 'Logan', 'Moe', 'Larry', 'Curly', 'Shemp', 'Groucho', 'Harpo', 'Chico', 'Zeppo', 'Stanley', 'Hardy'],
-        lastNames = ['Wirts', 'Oneil', 'Smith', 'Barbarosa', 'Soprano', 'Gotti', 'Columbo', 'Luciano', 'Doerre', 'DePena'],
-        months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
-        days = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
-        states = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'],
-        randomFunc = Math.random,
-        randomPerson = function() {
-            var firstName = Math.round((firstNames.length - 1) * randomFunc()),
-                lastName = Math.round((lastNames.length - 1) * randomFunc()),
-                pets = Math.round(10 * randomFunc()),
-                birthyear = 1900 + Math.round(randomFunc() * 114),
-                birthmonth = Math.round(randomFunc() * 11),
-                birthday = Math.round(randomFunc() * 29),
-                birthstate = Math.round(randomFunc() * 49),
-                residencestate = Math.round(randomFunc() * 49),
-                travel = randomFunc() * 1000,
-                income = randomFunc() * 100000,
-                employed = Math.round(randomFunc()),
-                person = {
-                    Last: lastNames[lastName],
-                    First: firstNames[firstName],
-                    Pets: pets,
-                    BirthDate: birthyear + '-' + months[birthmonth] + '-' + days[birthday],
-                    BirthState: states[birthstate],
-                    ResidenceState: states[residencestate],
-                    Wmployed: employed === 1,
-                    Income: income,
-                    Travel: travel
-                };
-            return person;
-        },
         data = [];
-
-        for (var i = 0; i < numRows; i ++) {
-            data.push(randomPerson());
-        }
     document.addEventListener('polymer-ready', function() {
-
+        fin.desktop.main(function (){
+            fin.desktop.InterApplicationBus.subscribe("*",
+                "more-data",
+                function (message, uuid) {
+                    jsonModel.setData(message.data);
+            });
+        });
         //get ahold of our json grid example
         var jsonGrid = document.querySelector('#json-example');
 
@@ -99,14 +51,6 @@
         window.assignData = function (data) {
             jsonModel.setData(data);
         };
-
-        fin.desktop.main(function (){
-            fin.desktop.InterApplicationBus.subscribe("*",
-                "more-data",
-                function (message, uuid) {
-                    jsonModel.setData(message.data);
-            });
-        });
 
         //all formatting and rendering per cell can be overridden in here
         cellProvider.getCell = function(config) {

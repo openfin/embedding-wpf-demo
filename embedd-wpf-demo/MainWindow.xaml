@@ -2,9 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:OpenFin="clr-namespace:Openfin.WPF;assembly=Openfin.WPF"
-        Title="MainWindow" Height="490" Width="778" ResizeMode="NoResize">
+        Title="MainWindow" Height="490" Width="778">
     <Grid>
-        <OpenFin:EmbeddedView x:Name="OpenFinEmbeddedView" Margin="137,0,0,0" />
-        <ListBox Name="StatesBox" HorizontalAlignment="Left" Height="461" Margin="1,0,0,0" VerticalAlignment="Top" Width="134" SelectionChanged="States_SelectionChanged" IsSynchronizedWithCurrentItem="False" SelectionMode="Multiple"/>
+        <OpenFin:EmbeddedView x:Name="OpenFinEmbeddedView" Margin="137,0,0,0" Width="auto" Height="auto" />
+        <ListBox Name="StatesBox" HorizontalAlignment="Left" Height="auto" Margin="1,0,0,0" VerticalAlignment="Top" Width="134" SelectionChanged="States_SelectionChanged" IsSynchronizedWithCurrentItem="False" SelectionMode="Multiple"/>
     </Grid>
 </Window>

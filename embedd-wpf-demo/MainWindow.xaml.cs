@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,10 +32,16 @@ namespace embedd_wpf_demo
                 EnableRemoteDevTools = true,
                 RemoteDevToolsPort = 9090
             };
-            //We do not resize so lets set AutoScale to false;
-            OpenFinEmbeddedView.AutoScale = false;
+
+            var runtime = Openfin.Desktop.Runtime.GetRuntimeInstance(runtimeOptions);
+
+            runtime.Error += (sender, e) =>
+            {
+                Console.Write(e);
+            };
+
             //Initialize the grid view by passing the runtime Options and the ApplicationOptions
-            OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid-uuid", "http://cdn.openfin.co/embed-web-wpf/"));
+            OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid-uuid", "http://local:8080/index.html"));
 
             //Once the grid is ready get the data and populate the list box.
             OpenFinEmbeddedView.OnReady += (sender, e) =>
@@ -52,6 +58,8 @@ namespace embedd_wpf_demo
                 
                 //Any Interactions with the UI must be done in the right thread.
                 Openfin.WPF.Utils.InvokeOnUiThreadIfRequired(this, () => peopleInStates.ForEach(state => StatesBox.Items.Add(state.StateName)));
+                
+                sendDataToGrid(peopleData);
             };
         }
 
@@ -63,7 +71,6 @@ namespace embedd_wpf_demo
                         select person).ToList();
             sendDataToGrid(data);
         }
-
 
         private void sendDataToGrid(List<Person> people)
         {

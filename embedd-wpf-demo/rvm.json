@@ -1,0 +1,10 @@
+{
+    "dialogSettings" : {
+        "logo" : "http://img1.wikia.nocookie.net/__cb20100130082645/gtawiki/images/9/9a/PlayStation_1_Logo.png",
+        "bgColor" : 4163183909,
+        "textColor" : 4293980400,
+        "progressBarBgColor" : 4278190080,
+        "progressBarFillColor" : 4281513430,
+        "progressBarBorderColor" : 4282137660
+    }
+}
