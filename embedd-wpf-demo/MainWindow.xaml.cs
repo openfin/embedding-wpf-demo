@@ -41,7 +41,7 @@ namespace embedd_wpf_demo
             };
 
             //Initialize the grid view by passing the runtime Options and the ApplicationOptions
-            OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid-uuid", "http://local:8080/index.html"));
+            OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid-uuid", "http://cdn.openfin.co/embed-web-wpf/index.html"));
 
             //Once the grid is ready get the data and populate the list box.
             OpenFinEmbeddedView.OnReady += (sender, e) =>
@@ -58,8 +58,14 @@ namespace embedd_wpf_demo
                 
                 //Any Interactions with the UI must be done in the right thread.
                 Openfin.WPF.Utils.InvokeOnUiThreadIfRequired(this, () => peopleInStates.ForEach(state => StatesBox.Items.Add(state.StateName)));
-                
-                sendDataToGrid(peopleData);
+
+                var t = new System.Threading.Thread(() =>
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    sendDataToGrid(peopleData);
+                    OpenFinEmbeddedView.OpenfinWindow.showDeveloperTools();
+                });
+                t.Start();
             };
         }
 
