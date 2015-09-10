@@ -1,16 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Newtonsoft.Json.Linq;
     
 namespace embedd_wpf_demo
@@ -20,7 +12,7 @@ namespace embedd_wpf_demo
     /// </summary>
     public partial class MainWindow : Window
     {
-        const string version = "alpha";
+        const string version = "beta";
         List<Person> peopleData;
         public MainWindow()
         {
@@ -61,9 +53,9 @@ namespace embedd_wpf_demo
 
                 var t = new System.Threading.Thread(() =>
                 {
-                    System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(2000);
+                    //OpenFinEmbeddedView.OpenfinWindow.showDeveloperTools();
                     sendDataToGrid(peopleData);
-                    OpenFinEmbeddedView.OpenfinWindow.showDeveloperTools();
                 });
                 t.Start();
             };
