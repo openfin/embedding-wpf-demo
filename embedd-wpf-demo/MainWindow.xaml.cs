@@ -12,7 +12,7 @@ namespace embedd_wpf_demo
     /// </summary>
     public partial class MainWindow : Window
     {
-        const string version = "beta";
+        const string version = "alpha";
         List<Person> peopleData;
         public MainWindow()
         {
@@ -53,8 +53,6 @@ namespace embedd_wpf_demo
 
                 var t = new System.Threading.Thread(() =>
                 {
-                    System.Threading.Thread.Sleep(2000);
-                    //OpenFinEmbeddedView.OpenfinWindow.showDeveloperTools();
                     sendDataToGrid(peopleData);
                 });
                 t.Start();
