@@ -22,7 +22,8 @@ namespace embedd_wpf_demo
             {
                 Version = version,
                 EnableRemoteDevTools = true,
-                RemoteDevToolsPort = 9090
+                RemoteDevToolsPort = 9090,
+                Arguments = "--no-sandbox"
             };
 
             var runtime = Openfin.Desktop.Runtime.GetRuntimeInstance(runtimeOptions);
