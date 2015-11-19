@@ -12,18 +12,15 @@ namespace embedd_wpf_demo
     /// </summary>
     public partial class MainWindow : Window
     {
-        const string version = "alpha";
         List<Person> peopleData;
+        string hypergridUUID = "hyper-grid-uuid";
         public MainWindow()
         {
             InitializeComponent();
             //Runtime options is how we set up the OpenFin Runtime environment
             var runtimeOptions = new Openfin.Desktop.RuntimeOptions
             {
-                Version = version,
-                EnableRemoteDevTools = true,
-                RemoteDevToolsPort = 9090,
-                Arguments = "--no-sandbox"
+                Version = "alpha"
             };
 
             var runtime = Openfin.Desktop.Runtime.GetRuntimeInstance(runtimeOptions);
@@ -34,7 +31,7 @@ namespace embedd_wpf_demo
             };
 
             //Initialize the grid view by passing the runtime Options and the ApplicationOptions
-            OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid-uuid", "http://cdn.openfin.co/embed-web-wpf/index.html"));
+            OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", hypergridUUID, "http://cdn.openfin.co/embed-web-wpf/index.html"));
 
             //Once the grid is ready get the data and populate the list box.
             OpenFinEmbeddedView.OnReady += (sender, e) =>
@@ -73,7 +70,7 @@ namespace embedd_wpf_demo
         {
             //package the data and send it over the inter application bus
             var message = JObject.FromObject(new { data = people });
-            OpenFinEmbeddedView.OpenfinRuntime.InterApplicationBus.send("hyper-grid-uuid", "more-data", message);
+            OpenFinEmbeddedView.OpenfinRuntime.InterApplicationBus.send(hypergridUUID, "more-data", message);
         }
     }
 }
