@@ -26,7 +26,7 @@
     document.addEventListener('polymer-ready', function() {
         fin.desktop.main(function (){
             fin.desktop.InterApplicationBus.subscribe("*",
-                "more-data",
+                "user-data",
                 function (message, uuid) {
                     jsonModel.setData(message.data);
             });

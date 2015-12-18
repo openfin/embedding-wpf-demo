@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Newtonsoft.Json.Linq;
-    
+
 namespace embedd_wpf_demo
 {
     /// <summary>
@@ -31,11 +31,12 @@ namespace embedd_wpf_demo
             };
 
             //Initialize the grid view by passing the runtime Options and the ApplicationOptions
-            OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", hypergridUUID, "http://cdn.openfin.co/embed-web-wpf/index.html"));
+            OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", hypergridUUID, "http://local:8080/index.html"));
 
             //Once the grid is ready get the data and populate the list box.
             OpenFinEmbeddedView.OnReady += (sender, e) =>
             {
+                OpenFinEmbeddedView.OpenfinWindow.showDeveloperTools();
                 //set up the data
                 peopleData = PeopleData.Get();
                 var peopleInStates = (from person in peopleData
@@ -70,7 +71,7 @@ namespace embedd_wpf_demo
         {
             //package the data and send it over the inter application bus
             var message = JObject.FromObject(new { data = people });
-            OpenFinEmbeddedView.OpenfinRuntime.InterApplicationBus.send(hypergridUUID, "more-data", message);
+            OpenFinEmbeddedView.OpenfinRuntime.InterApplicationBus.send(hypergridUUID, "user-data", message);
         }
     }
 }
