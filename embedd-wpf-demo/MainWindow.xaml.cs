@@ -14,6 +14,8 @@ namespace embedd_wpf_demo
     {
         const string version = "alpha";
         List<Person> peopleData;
+        MessageChannel dataMessageChannel;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,8 +34,16 @@ namespace embedd_wpf_demo
                 Console.Write(e);
             };
 
+            runtime.Connect(() => 
+            {
+                // Initialize the communication channel after the runtime has connected
+                // but before launching any applications or EmbeddedViews
+                dataMessageChannel = new MessageChannel(runtime.InterApplicationBus, "hyper-grid-uuid", "more-data");
+            });
+
             //Initialize the grid view by passing the runtime Options and the ApplicationOptions
-            OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid-uuid", "http://cdn.openfin.co/embed-web-wpf/index.html"));
+            var fileUri = new Uri(System.IO.Path.GetFullPath(@"..\..\web-content\index.html")).ToString();
+            OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid-uuid", fileUri));
 
             //Once the grid is ready get the data and populate the list box.
             OpenFinEmbeddedView.OnReady += (sender, e) =>
@@ -46,14 +56,16 @@ namespace embedd_wpf_demo
                                       {
                                           StateName = stateGroup.First().BirthState,
                                           People = stateGroup
-                                      }).ToList();
+                                      })
+                                      .OrderBy(p => p.StateName)
+                                      .ToList();
                 
                 //Any Interactions with the UI must be done in the right thread.
                 Openfin.WPF.Utils.InvokeOnUiThreadIfRequired(this, () => peopleInStates.ForEach(state => StatesBox.Items.Add(state.StateName)));
 
                 var t = new System.Threading.Thread(() =>
                 {
-                    sendDataToGrid(peopleData);
+                    dataMessageChannel.SendData(peopleData);
                 });
                 t.Start();
             };
@@ -65,14 +77,8 @@ namespace embedd_wpf_demo
             var data = (from person in peopleData   
                        where StatesBox.SelectedItems.Contains(person.BirthState)
                         select person).ToList();
-            sendDataToGrid(data);
-        }
 
-        private void sendDataToGrid(List<Person> people)
-        {
-            //package the data and send it over the inter application bus
-            var message = JObject.FromObject(new { data = people });
-            OpenFinEmbeddedView.OpenfinRuntime.InterApplicationBus.send("hyper-grid-uuid", "more-data", message);
+            dataMessageChannel.SendData(data);
         }
     }
 }

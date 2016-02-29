@@ -97,6 +97,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MessageChannel.cs" />
     <Compile Include="PeopleData.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -112,6 +113,38 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="web-content\app.js" />
+    <Content Include="web-content\bower_components\accountingjs\accounting.js" />
+    <Content Include="web-content\bower_components\accountingjs\accounting.min.js" />
+    <Content Include="web-content\bower_components\accountingjs\demo-resources\js\libs\jquery.min.js" />
+    <Content Include="web-content\bower_components\accountingjs\demo-resources\js\prettify.js" />
+    <Content Include="web-content\bower_components\accountingjs\demo-resources\style.css" />
+    <Content Include="web-content\bower_components\accountingjs\index.html" />
+    <Content Include="web-content\bower_components\accountingjs\tests\jasmine\core\formatMoneySpec.js" />
+    <Content Include="web-content\bower_components\accountingjs\tests\jasmine\core\formatNumberSpec.js" />
+    <Content Include="web-content\bower_components\accountingjs\tests\jasmine\core\unformatSpec.js" />
+    <Content Include="web-content\bower_components\accountingjs\tests\jasmine\lib\jasmine\jasmine-html.js" />
+    <Content Include="web-content\bower_components\accountingjs\tests\jasmine\lib\jasmine\jasmine.css" />
+    <Content Include="web-content\bower_components\accountingjs\tests\jasmine\lib\jasmine\jasmine.js" />
+    <Content Include="web-content\bower_components\accountingjs\tests\jasmine\runner.html" />
+    <Content Include="web-content\bower_components\accountingjs\tests\qunit\methods.js" />
+    <Content Include="web-content\bower_components\accountingjs\tests\qunit\speed.js" />
+    <Content Include="web-content\bower_components\accountingjs\tests\qunit\test.html" />
+    <Content Include="web-content\bower_components\accountingjs\tests\qunit\vendor\jquery.js" />
+    <Content Include="web-content\bower_components\accountingjs\tests\qunit\vendor\jslitmus.js" />
+    <Content Include="web-content\bower_components\accountingjs\tests\qunit\vendor\qunit.css" />
+    <Content Include="web-content\bower_components\accountingjs\tests\qunit\vendor\qunit.js" />
+    <Content Include="web-content\bower_components\webcomponentsjs\CustomElements.js" />
+    <Content Include="web-content\bower_components\webcomponentsjs\CustomElements.min.js" />
+    <Content Include="web-content\bower_components\webcomponentsjs\HTMLImports.js" />
+    <Content Include="web-content\bower_components\webcomponentsjs\HTMLImports.min.js" />
+    <Content Include="web-content\bower_components\webcomponentsjs\ShadowDOM.js" />
+    <Content Include="web-content\bower_components\webcomponentsjs\ShadowDOM.min.js" />
+    <Content Include="web-content\bower_components\webcomponentsjs\webcomponents-lite.js" />
+    <Content Include="web-content\bower_components\webcomponentsjs\webcomponents-lite.min.js" />
+    <Content Include="web-content\bower_components\webcomponentsjs\webcomponents.js" />
+    <Content Include="web-content\bower_components\webcomponentsjs\webcomponents.min.js" />
+    <Content Include="web-content\index.html" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -128,6 +161,15 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="web-content\bower.json" />
+    <None Include="web-content\bower_components\accountingjs\license" />
+    <None Include="web-content\bower_components\accountingjs\package.json" />
+    <None Include="web-content\bower_components\accountingjs\readme.md" />
+    <None Include="web-content\bower_components\accountingjs\tests\jasmine\lib\jasmine\MIT.LICENSE" />
+    <None Include="web-content\bower_components\webcomponentsjs\bower.json" />
+    <None Include="web-content\bower_components\webcomponentsjs\build.log" />
+    <None Include="web-content\bower_components\webcomponentsjs\package.json" />
+    <None Include="web-content\bower_components\webcomponentsjs\README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
