@@ -38,7 +38,7 @@ namespace embedd_wpf_demo
             {
                 // Initialize the communication channel after the runtime has connected
                 // but before launching any applications or EmbeddedViews
-                dataMessageChannel = new MessageChannel(runtime.InterApplicationBus, "hyper-grid-uuid", "more-data");
+                dataMessageChannel = new MessageChannel(runtime.InterApplicationBus, "hyper-grid-uuid", "user-data");
             });
 
             //Initialize the grid view by passing the runtime Options and the ApplicationOptions
