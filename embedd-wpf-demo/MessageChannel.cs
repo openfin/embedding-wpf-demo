@@ -98,8 +98,9 @@ namespace embedd_wpf_demo
             {
                 RemoteSideConnected = true;
 
-                foreach(var queuedMessage in _messageObjectQueue)
+                while(_messageObjectQueue.Count > 0)
                 {
+                    var queuedMessage = _messageObjectQueue.Dequeue();
                     InterApplicationBus.send(RemoteUuid, Topic, queuedMessage);
                 }
             }
