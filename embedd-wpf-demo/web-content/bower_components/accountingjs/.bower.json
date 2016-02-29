@@ -1,0 +1,15 @@
+{
+  "name": "accountingjs",
+  "homepage": "https://github.com/openexchangerates/accounting.js",
+  "version": "0.3.2",
+  "_release": "0.3.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.3.2",
+    "commit": "b14638fbec7a06cc7e87de0d7d7c8ea2a38d67f5"
+  },
+  "_source": "git://github.com/openexchangerates/accounting.js.git",
+  "_target": "~0.3.2",
+  "_originalSource": "accountingjs",
+  "_direct": true
+}
