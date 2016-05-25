@@ -1,12 +1,9 @@
 <!doctype html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
   <title>fin-hypergrid JSON Standalone Demo</title>
-  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
-  <script src="bower_components/accountingjs/accounting.min.js"></script>
-  <link rel="import" href="http://openfin.github.io/fin-hypergrid/components/fin-hypergrid/fin-hypergrid.min.html">
-
+  <script src="lib/fin-hypergrid.js"></script>
   <style>
     fin-hypergrid {
         position: absolute;
@@ -17,13 +14,13 @@
         overflow: hidden;
         width:100%;
     }
+    body {
+      overflow: hidden;
+    }
   </style>
 </head>
 <body>
-    <div id="hypergrid-container">
-        <fin-hypergrid class="abs" id="json-example">
-            <fin-hypergrid-behavior-json></fin-hypergrid-behavior-json>
-        </fin-hypergrid>
+    <div id="json-example">
     </div>
     <script src="app.js"></script>
 </body>
