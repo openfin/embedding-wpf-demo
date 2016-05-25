@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Newtonsoft.Json.Linq;
-
+    
 namespace embedd_wpf_demo
 {
     /// <summary>
@@ -12,9 +12,10 @@ namespace embedd_wpf_demo
     /// </summary>
     public partial class MainWindow : Window
     {
+        const string version = "alpha";
         List<Person> peopleData;
-        string hypergridUUID = "hyper-grid-uuid";
-        Openfin.Desktop.Runtime runtime;
+        MessageChannel dataMessageChannel;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -22,28 +23,33 @@ namespace embedd_wpf_demo
 
             var runtimeOptions = new Openfin.Desktop.RuntimeOptions
             {
-                Version = "alpha",
-                PortDiscoveryMode = Openfin.Desktop.PortDiscoveryMode.WindowClass
+                Version = version,
+                EnableRemoteDevTools = true,
+                RemoteDevToolsPort = 9090
             };
 
-            var uriPath = new Uri(System.IO.Path.Combine(Environment.CurrentDirectory, "web-content","index.html")).AbsoluteUri;
-            runtime = Openfin.Desktop.Runtime.GetRuntimeInstance(runtimeOptions);
+            var runtime = Openfin.Desktop.Runtime.GetRuntimeInstance(runtimeOptions);
 
             runtime.Error += (sender, e) =>
             {
                 Console.Write(e);
             };
 
-            runtime.Connect(()=> { });
-            
+            runtime.Connect(() => 
+            {
+                // Initialize the communication channel after the runtime has connected
+                // but before launching any applications or EmbeddedViews
+                dataMessageChannel = new MessageChannel(runtime.InterApplicationBus, "hyper-grid-uuid", "user-data");
+            });
+
             //Initialize the grid view by passing the runtime Options and the ApplicationOptions
-            OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", hypergridUUID, uriPath));
+            var fileUri = new Uri(System.IO.Path.GetFullPath(@"..\..\web-content\index.html")).ToString();
+            OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid-uuid", fileUri));
 
             //Once the grid is ready get the data and populate the list box.
             OpenFinEmbeddedView.OnReady += (sender, e) =>
             {
                 OpenFinEmbeddedView.OpenfinWindow.showDeveloperTools();
-
                 //set up the data
                 peopleData = PeopleData.Get();
                 var peopleInStates = (from person in peopleData
@@ -52,14 +58,16 @@ namespace embedd_wpf_demo
                                       {
                                           StateName = stateGroup.First().BirthState,
                                           People = stateGroup
-                                      }).ToList();
+                                      })
+                                      .OrderBy(p => p.StateName)
+                                      .ToList();
                 
                 //Any Interactions with the UI must be done in the right thread.
                 Openfin.WPF.Utils.InvokeOnUiThreadIfRequired(this, () => peopleInStates.ForEach(state => StatesBox.Items.Add(state.StateName)));
 
                 var t = new System.Threading.Thread(() =>
                 {
-                    sendDataToGrid(peopleData);
+                    dataMessageChannel.SendData(peopleData);
                 });
                 t.Start();
             };
@@ -71,14 +79,8 @@ namespace embedd_wpf_demo
             var data = (from person in peopleData   
                        where StatesBox.SelectedItems.Contains(person.BirthState)
                         select person).ToList();
-            sendDataToGrid(data);
-        }
 
-        private void sendDataToGrid(List<Person> people)
-        {
-            //package the data and send it over the inter application bus
-            var message = JObject.FromObject(new { data = people });
-            runtime.InterApplicationBus.send(hypergridUUID, "more-data", message);
+            dataMessageChannel.SendData(data);
         }
     }
 }

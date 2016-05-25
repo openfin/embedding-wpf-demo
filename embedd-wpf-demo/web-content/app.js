@@ -22,7 +22,7 @@ grid.addProperties({
 
 fin.desktop.main(function (){
     fin.desktop.InterApplicationBus.subscribe("*",
-        "more-data",
+        "user-data",
         function (message, uuid) {
             grid.behavior.setData(message.data);
     });
