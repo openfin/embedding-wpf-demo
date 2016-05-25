@@ -17,7 +17,8 @@ var grid = new fin.Hypergrid('#json-example', {
 grid.addProperties({
     showRowNumbers:false, 
     noDataMessage: "", 
-    columnAutosizing: false
+    columnAutosizing: false,
+    showFilterRow:false
 });
 
 fin.desktop.main(function (){
