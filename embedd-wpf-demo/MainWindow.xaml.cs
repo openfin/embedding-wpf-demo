@@ -49,7 +49,6 @@ namespace embedd_wpf_demo
             //Once the grid is ready get the data and populate the list box.
             OpenFinEmbeddedView.OnReady += (sender, e) =>
             {
-                OpenFinEmbeddedView.OpenfinWindow.showDeveloperTools();
                 //set up the data
                 peopleData = PeopleData.Get();
                 var peopleInStates = (from person in peopleData
