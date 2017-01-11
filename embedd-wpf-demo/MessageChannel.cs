@@ -72,7 +72,7 @@ namespace embedd_wpf_demo
 
             if (RemoteSideConnected)
             {
-                InterApplicationBus.send(RemoteUuid, Topic, message);
+                InterApplicationBus.Send(RemoteUuid, Topic, message);
             }
             else
             {
@@ -101,7 +101,7 @@ namespace embedd_wpf_demo
                 while(_messageObjectQueue.Count > 0)
                 {
                     var queuedMessage = _messageObjectQueue.Dequeue();
-                    InterApplicationBus.send(RemoteUuid, Topic, queuedMessage);
+                    InterApplicationBus.Send(RemoteUuid, Topic, queuedMessage);
                 }
             }
         }
