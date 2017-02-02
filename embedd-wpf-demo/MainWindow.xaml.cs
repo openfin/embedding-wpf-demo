@@ -47,7 +47,7 @@ namespace embedd_wpf_demo
             OpenFinEmbeddedView.Initialize(runtimeOptions, new Openfin.Desktop.ApplicationOptions("hyper-grid", "hyper-grid-uuid", fileUri));
 
             //Once the grid is ready get the data and populate the list box.
-            OpenFinEmbeddedView.OnReady += (sender, e) =>
+            OpenFinEmbeddedView.Ready += (sender, e) =>
             {
                 //set up the data
                 peopleData = PeopleData.Get();

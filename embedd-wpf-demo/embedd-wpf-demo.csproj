@@ -40,20 +40,20 @@
       <HintPath>..\packages\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Openfin.WinForm, Version=6.0.0.1, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
-      <HintPath>..\packages\Openfin.WinForm.6.0.0.1-alpha\lib\net40\Openfin.WinForm.dll</HintPath>
+    <Reference Include="Openfin.WinForm, Version=6.0.0.6, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
+      <HintPath>..\packages\Openfin.WinForm.6.0.0.6-beta\lib\net40\Openfin.WinForm.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OpenFin.WPF, Version=6.0.0.1, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenFin.WPF.6.0.0.1-alpha\lib\net40\OpenFin.WPF.dll</HintPath>
+    <Reference Include="OpenFin.WPF, Version=6.0.0.6, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenFin.WPF.6.0.0.6-beta\lib\net40\OpenFin.WPF.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OpenfinDesktop, Version=6.0.0.1, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenfinDesktop.6.0.0.1-alpha\lib\net40\OpenfinDesktop.dll</HintPath>
+    <Reference Include="OpenfinDesktop, Version=6.0.0.6, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenfinDesktop.6.0.0.6-beta\lib\net40\OpenfinDesktop.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -69,8 +69,8 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="UIAutomationProvider" />
-    <Reference Include="WebSocket4Net, Version=0.12.0.0, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebSocket4Net.0.12\lib\net40\WebSocket4Net.dll</HintPath>
+    <Reference Include="WebSocket4Net, Version=0.14.1.0, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocket4Net.0.14.1\lib\net40\WebSocket4Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
@@ -119,9 +119,7 @@
     <Content Include="web-content\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="web-content\lib\fin-hypergrid.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="web-content\lib\fin-hypergrid.min.js" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -129,6 +127,7 @@
     <Content Include="data.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="app.config" />
     <None Include="log-config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
