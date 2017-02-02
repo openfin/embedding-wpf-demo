@@ -42,10 +42,10 @@ The EmbeddedView needs to be initialized with both the RuntimeOptions object and
     OpenFinEmbeddedView.Initialize(runtimeOptions, appOptions);
 ```
 
-###OnReady
-To programmatically react to when the EmbeddedView has loaded its content, initialized and is ready to be displayed you can subscribe to the OnReady event:
+###Ready
+To programmatically react to when the EmbeddedView has loaded its content, initialized and is ready to be displayed you can subscribe to the Ready event:
 ```js
-OpenFinEmbeddedView.OnReady += (sender, e) =>
+OpenFinEmbeddedView.Ready += (sender, e) =>
 {
     //Any Interactions with the UI must be done in the right thread.
     Utils.InvokeOnUiThreadIfRequired(this, () => 
@@ -56,7 +56,7 @@ OpenFinEmbeddedView.OnReady += (sender, e) =>
 ###Embedding Child Windows
 The OpenFinEmbeddedView allows you to embed web applicatons, these have their own render process and sandbox, but it also allows you to embed child windows that can share the same render process and sandbox, adding the risk of one window crashing the other but using less resources.
 ```js
-OpenFinEmbeddedView.OnReady += (sender, e) =>
+OpenFinEmbeddedView.Ready += (sender, e) =>
 {
     //We need to create our WindowOptions Object
     var windowOptions = new WindowOptions("jsdocs", "http://cdn.openfin.co/jsdocs/3.0.1.5/");
