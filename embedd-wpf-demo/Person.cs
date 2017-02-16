@@ -20,12 +20,12 @@ namespace embedd_wpf_demo
         public bool Employed { get; set; }
         public double Income
         {
-            get { return Math.Round(_income, PRECISION); }
+            get { return Math.Round(_income, Precision); }
             set { _income = value; }
         }
         public double Travel
         {
-            get { return Math.Round(_travel, PRECISION); }
+            get { return Math.Round(_travel, Precision); }
             set { _travel = value; }
         }
     }
