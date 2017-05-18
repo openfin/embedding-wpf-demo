@@ -127,7 +127,6 @@
     <Content Include="data.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="app.config" />
     <None Include="log-config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
