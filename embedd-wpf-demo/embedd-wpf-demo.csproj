@@ -44,16 +44,16 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Openfin.WinForm, Version=6.0.1.1, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
-      <HintPath>..\packages\Openfin.WinForm.6.0.1\lib\net40\Openfin.WinForm.dll</HintPath>
+    <Reference Include="Openfin.WinForm, Version=6.2.0.7, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
+      <HintPath>..\packages\Openfin.WinForm.6.2.0\lib\net40\Openfin.WinForm.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OpenFin.WPF, Version=6.0.1.1, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenFin.WPF.6.0.1\lib\net40\OpenFin.WPF.dll</HintPath>
+    <Reference Include="OpenFin.WPF, Version=6.2.0.7, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenFin.WPF.6.2.0\lib\net40\OpenFin.WPF.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OpenfinDesktop, Version=6.0.1.1, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenfinDesktop.6.0.1\lib\net40\OpenfinDesktop.dll</HintPath>
+    <Reference Include="OpenfinDesktop, Version=6.2.0.7, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenfinDesktop.6.2.0\lib\net40\OpenfinDesktop.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
