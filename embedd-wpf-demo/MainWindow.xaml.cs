@@ -12,7 +12,7 @@ namespace embedd_wpf_demo
     /// </summary>
     public partial class MainWindow : Window
     {
-        const string version = "alpha";
+        const string version = "stable";
         List<Person> peopleData;
         MessageChannel dataMessageChannel;
 
