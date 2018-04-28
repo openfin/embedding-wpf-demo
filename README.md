@@ -29,20 +29,20 @@ var runtimeOptions = new Openfin.Desktop.RuntimeOptions
 };
 ```
 
-###Application Options
+### Application Options
 The Application Options object allows you to configure the OpenFin Application being embedded, options include: name, URL, icon and window options, you can read more about options in our [Docs](https://openfin.co/developers/application-config/):
 ```js
 var appOptions = new Openfin.Desktop.ApplicationOptions("of-chart", 
     "of-chart-uuid", "http://cdn.openfin.co/embed-web/chart.html");
 ```
 
-###Initialize
+### Initialize
 The EmbeddedView needs to be initialized with both the RuntimeOptions object and the ApplicationOptions object:
 ```js
     OpenFinEmbeddedView.Initialize(runtimeOptions, appOptions);
 ```
 
-###Ready
+### Ready
 To programmatically react to when the EmbeddedView has loaded its content, initialized and is ready to be displayed you can subscribe to the Ready event:
 ```js
 OpenFinEmbeddedView.Ready += (sender, e) =>
@@ -53,7 +53,7 @@ OpenFinEmbeddedView.Ready += (sender, e) =>
 }
 ```
 
-###Embedding Child Windows
+### Embedding Child Windows
 The OpenFinEmbeddedView allows you to embed web applicatons, these have their own render process and sandbox, but it also allows you to embed child windows that can share the same render process and sandbox, adding the risk of one window crashing the other but using less resources.
 ```js
 OpenFinEmbeddedView.Ready += (sender, e) =>
@@ -66,7 +66,7 @@ OpenFinEmbeddedView.Ready += (sender, e) =>
 }
 ```
 
-###Runtime Object
+### Runtime Object
 Every EmbeddedView control that shares a RuntimeOptions object will share a connection to the OpenFin Runtime. You can obtain this singleton object via the Runtime.GetRuntimeInstance function. It allows you to publish and subscribe to Inter Application Bus messages, react to disconnect events, and initiate connect calls (this is optional and unnecessary in the case where one or more EmbeddedView control has been initialized).
 ```js
 var openFinRuntime = Runtime.GetRuntimeInstance(runtimeOptions);
