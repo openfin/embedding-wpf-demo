@@ -3,7 +3,7 @@ This is a demo WPF application that embeds an HTML 5 application and shares data
 
 ![embed](screenshot.png)
 
-#Getting started with Openfin.WPF
+# Getting started with Openfin.WPF
 * Follow the [NuGet](https://www.nuget.org/packages/OpenFin.WPF/) install instructions.
 
 * Add this XmlNamespace attribute to the root element of the markup file where it is to be used:
