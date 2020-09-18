@@ -22,10 +22,45 @@ grid.addProperties({
     showFilterRow: false
 });
 
-fin.desktop.main(function () {
-    fin.desktop.InterApplicationBus.subscribe("*",
-        "user-data",
-        function (message, uuid) {
-            grid.behavior.setData(message.data);
-        });
+fin.desktop.main(async function () {
+    const channelName = "user-data";
+    const dataChangeTopic = "data-updated";
+    const selectionChangeTopic = "selection-changed";
+
+    //fin.InterApplicationBus.subscribe({ uuid: "*" },
+    //    "user-data",
+    //    function (message, uuid) {
+    //        grid.behavior.setData(message.data);
+    //    });
+
+    let channelClient = await fin.InterApplicationBus.Channel.connect(channelName);
+    channelClient.register(dataChangeTopic, data => {
+        console.log('data received');
+        grid.behavior.setData(data);
+    });
+
+
+    grid.addEventListener('click', (e) => {
+        let selectedValue = getSelectedValue() || '';
+        channelClient.dispatch(selectionChangeTopic, selectedValue);
+    });
 });
+
+function getSelectedValue() {
+    let selection = grid.getSelection();
+
+    if (selection.length !== 1)
+        return;
+
+    let columns = selection[0];
+
+    if (Object.keys(columns).length !== 1)
+        return;
+
+    let values = columns[Object.keys(columns)[0]];
+
+    if (values.length !== 1)
+        return;
+
+    return values[0];
+}

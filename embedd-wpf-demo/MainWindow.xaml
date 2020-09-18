@@ -3,8 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:OpenFin="clr-namespace:Openfin.WPF;assembly=Openfin.WPF"
         Title="MainWindow" Height="490" Width="1055">
-    <Grid>
-        <OpenFin:EmbeddedView x:Name="OpenFinEmbeddedView" Margin="135,0,0,0" Width="auto" Height="auto" />
-        <ListBox Name="StatesBox" HorizontalAlignment="Left" Background="#f1f1f1" Height="auto" Margin="1,0,0,0" VerticalAlignment="Top" Width="134" SelectionChanged="States_SelectionChanged" IsSynchronizedWithCurrentItem="False" SelectionMode="Multiple"/>
-    </Grid>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Left" Background="#f1f1f1" Width="134">
+            <Label>Selected Value</Label>
+            <TextBlock x:Name="SelectedValue" Margin="8,0,0,0"></TextBlock>
+            <Label>Filter</Label>
+            <ListBox Name="StatesBox"  SelectionChanged="States_SelectionChanged" IsSynchronizedWithCurrentItem="False" SelectionMode="Multiple"/>
+        </StackPanel>
+        <OpenFin:EmbeddedView DockPanel.Dock="Right" x:Name="OpenFinEmbeddedView" Background="AliceBlue" />
+    </DockPanel>
 </Window>
