@@ -14,7 +14,7 @@ namespace embedd_wpf_demo
     /// </summary>
     public partial class MainWindow : Window
     {
-        const string RuntimeVersion = "stable";
+        const string RuntimeVersion = "19.89.57.15";
         const string AppUuid = "hyper-grid-uuid";
         const string AppName = "hyper-grid";
         const string ChannelName = "user-data";
