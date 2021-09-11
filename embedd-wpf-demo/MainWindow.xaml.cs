@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Newtonsoft.Json.Linq;
+using Openfin.Desktop;
 using Openfin.Desktop.Messaging;
 using Fin = Openfin.Desktop;
     
@@ -12,9 +13,9 @@ namespace embedd_wpf_demo
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : System.Windows.Window
     {
-        const string RuntimeVersion = "19.89.57.15";
+        const string RuntimeVersion = "20.91.62.4";
         const string AppUuid = "hyper-grid-uuid";
         const string AppName = "hyper-grid";
         const string ChannelName = "user-data";
@@ -24,6 +25,8 @@ namespace embedd_wpf_demo
         List<Person> peopleData;
 
         Fin.Messaging.ChannelClient channelClient;
+
+        Runtime currentRuntimeInstance;
 
         public MainWindow()
         {
@@ -39,6 +42,7 @@ namespace embedd_wpf_demo
             };
 
             var fin = Fin.Runtime.GetRuntimeInstance(runtimeOptions);
+            currentRuntimeInstance = fin;
 
             fin.Error += (sender, e) =>
             {
@@ -54,6 +58,7 @@ namespace embedd_wpf_demo
                 channelProvider.RegisterTopic<string,bool>(SelectionChangeTopic, OnSelectionChanged);
                 channelProvider.ClientConnected += ChannelProvider_ClientConnected;
                 channelProvider.OpenAsync().Wait();
+                
             });
 
             //Initialize the grid view by passing the runtime Options and the ApplicationOptions
@@ -73,6 +78,11 @@ namespace embedd_wpf_demo
                                       })
                                       .OrderBy(p => p.StateName)
                                       .ToList();
+       
+                InterApplicationBus.Subscription<string>(fin, SelectionChangeTopic).MessageReceived += (s, iabEvent) =>
+                {
+                   Console.WriteLine(DateTime.Now.ToString() + ": message received: " + iabEvent.Message);
+                };
 
                 //Any Interactions with the UI must be done in the right thread.
                 Dispatcher.Invoke(new Action(() =>
@@ -108,6 +118,7 @@ namespace embedd_wpf_demo
                         select person).ToList();
 
             channelClient?.DispatchAsync(DataChangeTopic, data);
+            InterApplicationBus.Publish(currentRuntimeInstance, DataChangeTopic, data);
         }
     }
 }

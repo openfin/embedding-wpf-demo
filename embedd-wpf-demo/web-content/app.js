@@ -27,11 +27,9 @@ fin.desktop.main(async function () {
     const dataChangeTopic = "data-updated";
     const selectionChangeTopic = "selection-changed";
 
-    //fin.InterApplicationBus.subscribe({ uuid: "*" },
-    //    "user-data",
-    //    function (message, uuid) {
-    //        grid.behavior.setData(message.data);
-    //    });
+    fin.InterApplicationBus.subscribe({ uuid: "*" }, dataChangeTopic, (message) => {
+        console.log("Message received: ", message);
+    }).then(() => { console.log("subscribed"); }, err => { console.error("Error received", err); });
 
     let channelClient = await fin.InterApplicationBus.Channel.connect(channelName);
     channelClient.register(dataChangeTopic, data => {
@@ -43,6 +41,7 @@ fin.desktop.main(async function () {
     grid.addEventListener('click', (e) => {
         let selectedValue = getSelectedValue() || '';
         channelClient.dispatch(selectionChangeTopic, selectedValue);
+        fin.InterApplicationBus.publish(selectionChangeTopic, selectedValue).then(() => console.log('Published')).catch(err => console.log(err));
     });
 });
 
