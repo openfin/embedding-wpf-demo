@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using Newtonsoft.Json.Linq;
 using Openfin.Desktop.Messaging;
 using Fin = Openfin.Desktop;
+
     
 namespace embedd_wpf_demo
 {
@@ -58,7 +59,7 @@ namespace embedd_wpf_demo
 
             //Initialize the grid view by passing the runtime Options and the ApplicationOptions
             var fileUri = new Uri(System.IO.Path.GetFullPath(@"..\..\web-content\index.html")).ToString();
-            OpenFinEmbeddedView.Initialize(runtimeOptions, new Fin.ApplicationOptions(AppName,  AppUuid, fileUri));
+            OpenFinEmbeddedView.Initialize(runtimeOptions, new Fin.ApplicationOptions(AppName, AppUuid, fileUri));
 
             //Once the grid is ready get the data and populate the list box.
             OpenFinEmbeddedView.Ready += (sender, e) =>
@@ -91,7 +92,7 @@ namespace embedd_wpf_demo
             System.Threading.ThreadPool.QueueUserWorkItem(o =>
             {
                 channelClient?.DispatchAsync(DataChangeTopic, peopleData);
-            }); 
+            });
         }
 
         private bool OnSelectionChanged(string selection)
