@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>embedd_wpf_demo</RootNamespace>
     <AssemblyName>embedd-wpf-demo</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -39,20 +39,20 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetZip, Version=1.15.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetZip.1.15.0\lib\net40\DotNetZip.dll</HintPath>
+    <Reference Include="DotNetZip, Version=1.16.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.16.0\lib\net40\DotNetZip.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Openfin.WinForm, Version=16.7.0.0, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
-      <HintPath>..\packages\Openfin.Winform.16.7.0\lib\net452\Openfin.WinForm.dll</HintPath>
+    <Reference Include="Openfin.WinForm, Version=17.4.0.0, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
+      <HintPath>..\packages\Openfin.Winform.17.4.0\lib\net452\Openfin.WinForm.dll</HintPath>
     </Reference>
-    <Reference Include="Openfin.WPF, Version=16.7.0.0, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
-      <HintPath>..\packages\Openfin.WPF.16.7.0\lib\net452\Openfin.WPF.dll</HintPath>
+    <Reference Include="Openfin.WPF, Version=17.4.0.0, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
+      <HintPath>..\packages\Openfin.WPF.17.4.0\lib\net452\Openfin.WPF.dll</HintPath>
     </Reference>
-    <Reference Include="OpenfinDesktop, Version=16.7.0.0, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenfinDesktop.16.7.0\lib\net452\OpenfinDesktop.dll</HintPath>
+    <Reference Include="OpenfinDesktop, Version=17.4.0.0, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenfinDesktop.17.4.0\lib\net452\OpenfinDesktop.dll</HintPath>
     </Reference>
     <Reference Include="SuperSocket.ClientEngine, Version=0.10.0.0, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
       <HintPath>..\packages\SuperSocket.ClientEngine.0.10.0\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
@@ -61,8 +61,14 @@
     <Reference Include="System.Collections.Specialized, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Specialized.4.3.0\lib\net46\System.Collections.Specialized.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
     </Reference>
@@ -75,6 +81,12 @@
     <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net46\System.Security.Cryptography.Algorithms.dll</HintPath>
     </Reference>
