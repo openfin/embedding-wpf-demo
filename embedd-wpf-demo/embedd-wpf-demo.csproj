@@ -46,13 +46,16 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Openfin.WinForm, Version=17.4.0.0, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
-      <HintPath>..\packages\Openfin.Winform.17.4.0\lib\net452\Openfin.WinForm.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\dotnet-adapter\OpenFin.WPF\bin\Debug\net452\Openfin.WinForm.dll</HintPath>
     </Reference>
     <Reference Include="Openfin.WPF, Version=17.4.0.0, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
-      <HintPath>..\packages\Openfin.WPF.17.4.0\lib\net452\Openfin.WPF.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\dotnet-adapter\OpenFin.WPF\bin\Debug\net452\Openfin.WPF.dll</HintPath>
     </Reference>
-    <Reference Include="OpenfinDesktop, Version=17.4.0.0, Culture=neutral, PublicKeyToken=18a277d64dddd680, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenfinDesktop.17.4.0\lib\net452\OpenfinDesktop.dll</HintPath>
+    <Reference Include="OpenfinDesktop, Version=17.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\dotnet-adapter\OpenfinDesktop\bin\Debug\net452\OpenfinDesktop.dll</HintPath>
     </Reference>
     <Reference Include="SuperSocket.ClientEngine, Version=0.10.0.0, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
       <HintPath>..\packages\SuperSocket.ClientEngine.0.10.0\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
